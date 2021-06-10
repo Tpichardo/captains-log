@@ -36,6 +36,17 @@ logs.put('/:id', (req, res) => {
     }
 })
 
+logs.delete('/:id', (req, res) => {
+    const id = req.params.id
+    if (capArr[id]) {
+        const deleted = capArr.splice(id, 1)
+        res.json(deleted)
+    }
+    else {
+        res.redirect('/404')
+    }
+})
+
 
 
 module.exports = logs;
