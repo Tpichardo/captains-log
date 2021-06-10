@@ -27,9 +27,13 @@ logs.post('/', (req, res) => {
 
 logs.put('/:id', (req, res) => {
     const id = req.params.id
-    //do we want to check the shape of the incoming data
-    capArr[id] = req.body 
-    res.json(capArr[id])
+    if (capArr[id]) {
+        capArr[id] = req.body 
+        res.json(capArr[id])
+    }
+    else {
+        res.redirect('/404')
+    }
 })
 
 
